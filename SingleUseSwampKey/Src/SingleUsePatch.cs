@@ -14,16 +14,22 @@ public static class SingleDoorPatch
         {
             if (character == localPlayer)
             {
-                var inventory = character.GetInventory();
-                if (inventory != null)
+                var keyItem = __instance.m_keyItem;
+                if (keyItem != null)
                 {
-                    if (inventory.ContainsItemByName("$item_cryptkey"))
+                    if (keyItem.m_itemData.m_shared.m_name == "$item_cryptkey")
                     {
-                        inventory.RemoveItem("$item_cryptkey", 1);
-                    }
+                        var inventory = character.GetInventory();
+                        if (inventory != null)
+                        {
+                            if (inventory.ContainsItemByName("$item_cryptkey"))
+                            {
+                                inventory.RemoveItem("$item_cryptkey", 1);
+                            }
+                        }
+                    }  
                 }
             }
-            
         }
     }
 } 
